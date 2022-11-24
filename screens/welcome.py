@@ -8,8 +8,6 @@ class Welcome(BaseScreen):
         super().__init__(*args, **kwargs)
         self.screen = pygame.display.set_mode((1280,720))
 
-
-
     def draw(self):
         """This overrides the draw method from the BaseScreen class"""
 
@@ -30,10 +28,6 @@ class Welcome(BaseScreen):
             if pygame.mouse.get_pressed()[0]:
                 self.next_screen = "game"
                 self.running = False
-
-
-        #pygame.display.update()
-
 
     def update(self):
         pass

@@ -1,9 +1,8 @@
 import pygame
 from screens import Welcome, GameScreen, GameOver
-from sprites import Player
 
 
-class Game(Player):
+class Game:
     """Main class for the application"""
 
     def __init__(self):

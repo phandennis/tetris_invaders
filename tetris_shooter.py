@@ -13,6 +13,10 @@ class Game:
 
     def run(self):
         """Main method, manages interaction between screens"""
+        
+        # All sprites required to run
+        self.all_sprites = pygame.sprite.Group()
+        
         # These are the available screens
         screens = {
             "welcome": Welcome,

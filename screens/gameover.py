@@ -5,8 +5,18 @@ from pygame import mixer
 class GameOver(BaseScreen):
     # *args non-key worded, variable length argument list
     # **kwargs keyword arguments
+    """The GameOver class 
+    which has methods of 
+    draw,
+    update,
+    manage_event
+
+    Args:
+        BaseScreen (Class): Base Screen for all the screens in the game
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.score = 0
 
         mixer.init()
         pygame.mixer.music.load("./sound/gameover.wav")
@@ -14,14 +24,21 @@ class GameOver(BaseScreen):
         pygame.mixer.music.play()
 
     def draw(self):
-        """This overrides the draw method from the BaseScreen class"""
+        """This overrides the draw method from the BaseScreen class
+        
+        It loads:
+        background image
+        game over text
+        try again text
+        quit text
+        """
 
         background = pygame.image.load("./images/background.png")
         background_rect = background.get_rect(topleft=(0,0))
         self.window.blit(background, background_rect)
 
         gameover = pygame.image.load("./images/gameover.png").convert_alpha()
-        go_rect = gameover.get_rect(center=(640,200))
+        go_rect = gameover.get_rect(center=(640,160))
         self.window.blit(gameover, go_rect)
 
         #press start button
@@ -44,16 +61,8 @@ class GameOver(BaseScreen):
                 self.next_screen = False
                 self.running = False
 
-
-
-        #pygame.display.update()
-
-
     def update(self):
         pass
     
     def manage_event(self, event):
-        print(event)
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_0:
-            self.next_screen = "gameover"
-            self.running = False
+        pass

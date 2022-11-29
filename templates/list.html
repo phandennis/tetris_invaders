@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1> Leaderboards </h1>
+  <h2> Tetris Invaders</h2>
+ 
+    <table style="width:100%" border-collapse="collapse">
+      
+      <tr>
+        <th>Player Name</th>
+        <th>Score</th>
+        <th>Date</th>
+      </tr>
+      {% for info in data %}
+      <tr>
+        <td> {{ info.username }} </td>
+        <td> {{ info.score }}</td>
+        <td> {{ info.date }} </td>
+      </tr>
+      {% endfor %}
+      
+    </table>
+
+    <table style="width:100%">
+{% endblock %}

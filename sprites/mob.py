@@ -7,7 +7,7 @@ class Mob(pygame.sprite.Sprite):
     Health was not implemented in the game
     Mob_Image so it gets the image of the mob 
     Args:
-        pygame (_type_): _description_
+        pygame.sprite.Sprite (Class): the built-in pygame class Sprite
     """
     def __init__(self, x, y, speed, health, mob_image):
         """Initalize the stats and position

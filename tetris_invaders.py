@@ -2,7 +2,7 @@ import pygame
 from screens import Welcome, GameScreen, GameOver
 
 
-class Game:
+class Game(GameScreen):
     """Main class for the application"""
 
     def __init__(self):
@@ -11,12 +11,14 @@ class Game:
 
         pygame.display.set_caption("Tetris Shooter")
 
+        pygame.font.init()
+
     def run(self):
         """Main method, manages interaction between screens"""
-        
-        # All sprites required to run
         self.all_sprites = pygame.sprite.Group()
-        
+        self.score = 0
+        self.username = ''
+        state = {}
         # These are the available screens
         screens = {
             "welcome": Welcome,
@@ -34,7 +36,7 @@ class Game:
             
             GameScreen.draw(self)
             # Create a new screen object, "connected" to the window
-            screen = screen_class(self.window)
+            screen = screen_class(self.window, state)
             # Run the screen
             screen.run()
             # When the `run` method stops, we should have a `next_screen` setup
@@ -42,6 +44,7 @@ class Game:
                 running = False
             # Switch to the next screen
             current_screen = screen.next_screen
+            state = screen.state
 
 
 if __name__ == "__main__":

@@ -6,9 +6,10 @@ class BaseScreen:
     Base class for the game screens
     """
 
-    def __init__(self, window):
+    def __init__(self, window, state):
         # surface for the window
         self.window = window
+        self.state = state
 
 
         # default, when True it can switch to another screen
@@ -18,29 +19,32 @@ class BaseScreen:
         """
         This is the main method for the class.
         This manages the event loop, and:
-        sets the game at 60 FPS,
         calls `update` and `draw`
         calls `manage_event` for each event recieved
         quits the game if the quit button is pressed on or escape key is pressed
         """
-
-        #fps = pygame.time.Clock()
         self.running = True
+        paused = False
         while self.running:
-            #fps.tick(144)
-            self.update()
-            self.draw()
-            pygame.display.update()
-
             for event in pygame.event.get():
                 self.manage_event(event)
                 # To exit the game
                 if event.type == pygame.QUIT:
                     self.running = False
                     self.next_screen = False
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+                    self.pause()
+                    paused = not paused
                 elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     self.running = False
                     self.next_screen = False
+            if paused == True:
+                continue
+            self.update()
+            self.draw()
+            pygame.display.update()
+
+
                 #call the manage_event method
 
 #everything has a hitbox of a rectangle
@@ -56,3 +60,6 @@ class BaseScreen:
     
     def manage_event(self, event):
         print("You should override the manage_event method in your class")
+
+    def pause(self):
+        print("Pause")

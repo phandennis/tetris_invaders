@@ -31,6 +31,7 @@ class Mob(pygame.sprite.Sprite):
         self.rect.bottom = y
         self.mob_speed = speed
         self.counter = 0
+        # to do list, implement health to take more hits
         self.mob_health = health
 
     def update(self):
@@ -42,9 +43,9 @@ class Mob(pygame.sprite.Sprite):
         if self.counter % 20 == 0:
             self.rect.y += self.mob_speed
         if self.counter == 0:
-            self.rect.x += 10
+            self.rect.x += 50
         if self.counter == 2000:
-            self.rect.x -= 10
+            self.rect.x -= 50
         self.counter += 20
         if self.counter == 3000:
             self.counter = 0

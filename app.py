@@ -1,4 +1,3 @@
-import operator
 from models.get_data import GetData
 
 app = Flask(__name__)

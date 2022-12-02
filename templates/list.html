@@ -10,11 +10,11 @@
         <th>Score</th>
         <th>Date</th>
       </tr>
-      {% for info in data %}
+      {% for info in range(length) %}
       <tr>
-        <td> {{ info.username }} </td>
-        <td> {{ info.score }}</td>
-        <td> {{ info.date }} </td>
+        <td> {{ name[info] }} </td>
+        <td> {{ score[info] }}</td>
+        <td> {{ date[info] }} </td>
       </tr>
       {% endfor %}
       

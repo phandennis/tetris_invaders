@@ -4,6 +4,8 @@ from sprites import Mob, Player, Projectile
 from pygame import mixer
 import json
 from datetime import datetime
+import webbrowser
+from subprocess import Popen
 
 # loads the player which is a ship from the Class Player
 ship = pygame.image.load('./images/player.png')

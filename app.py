@@ -1,24 +1,16 @@
-from flask import Flask, render_template, request
-import json
 import operator
+from models.get_data import GetData
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def home():
-    data = 0
-    with open('./data/scores.json') as json_file:
-        data = json.load(json_file)
-        data.sort(key=operator.itemgetter("score"), reverse=True)
-    return render_template('list.html', data=data)
-
-@app.route("/sort_by_date")
-def sort_by_username():
-    data = 0
-    with open('./data/scores.json') as json_file:
-        data = json.load(json_file)
-        data.sort(key=operator.itemgetter("date"), reverse=True)
-    return render_template('list.html', data=data)
+    data = GetData()
+    name = data.username
+    score = data.scores
+    date = data.dates
+    length = len(name)
+    return render_template('list.html', length=length, data=data, name=name, score=score, date=date)
 
 if __name__ == '__main__':
     app.run(host='localhost', debug=True, port=3000)

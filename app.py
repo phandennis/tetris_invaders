@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import json
-from flask_api.grab_score import GrabScore
 import operator
 
 app = Flask(__name__)
@@ -22,4 +21,4 @@ def sort_by_username():
     return render_template('list.html', data=data)
 
 if __name__ == '__main__':
-    app.run(host='localhost', debug=True)
+    app.run(host='localhost', debug=True, port=3000)

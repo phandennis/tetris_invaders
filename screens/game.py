@@ -346,12 +346,17 @@ class GameScreen(BaseScreen, Player, Mob, Projectile):
 
         # Records the username, score and date when the game is over to the json file in ./data/scores.json
         if self.next_screen == "game_over":
-            entry = { "username": f'{self.username}', "score": int(f'{self.score}'), "date": datetime.today().strftime('%Y-%m-%d') }
-            with open("./data/scores.json", "r") as file:
-                data = json.load(file)
-                data.append(entry)
-                with open("./data/scores.json", "w") as f:
-                    json.dump(list(data), f)
+            self.write_to_json()
+
+    def write_to_json(self):
+        entry = { "username": f'{self.username}', "score": int(f'{self.score}'), "date": datetime.today().strftime('%Y-%m-%d') }
+        with open("./data/scores.json", "r") as file:
+            data = json.load(file)
+            data.append(entry)
+            with open("./data/scores.json", "w") as f:
+                json.dump(list(data), f)
+        Popen('python app.py')
+        webbrowser.open('http://127.0.0.1:3000')
 
 
         

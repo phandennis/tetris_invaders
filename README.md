@@ -14,4 +14,9 @@ Press 'p' to pause
 run `python tetris_invaders.py` to check out the game  
 run `python app.py` to check out the leaderboards
 
+## Tutorial
+
+You will enter the welcome screen shown below:
+
+![welcome](./images/readme/welcome_screen.png)
 

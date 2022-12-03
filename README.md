@@ -7,7 +7,7 @@ Dennis Phan
 ## Controls
 
 Up, Down, Left, Right arrows moves the ship  
-Space to shoot on the game screen
+Space to shoot on the game screen  
 Press 'p' to pause
 
 ## To run the game

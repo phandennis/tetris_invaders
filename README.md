@@ -56,5 +56,8 @@ You can click `try again` to play.
 
 ### Leaderboards
 
-![leaderboard](./images/readme/leaderboard.png)
+![leaderboard](./images/readme/leaderboards.png)
+
+You can click a player's name and it will direct you to their profile.
+It will query search for the stats attached to the player's name.  
 ![profile](./images/readme/profile.png)

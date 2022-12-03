@@ -1,0 +1,20 @@
+
+  <a href="/">Home</a>
+
+{% extends "base.html" %}
+{% block content %}
+<h1> Profile </h1>
+<h2> {{ player_name }} </h2>
+<table style="width:100%">
+    <tr>
+        <th> Score </th>
+        <th> Date </th>
+    </tr>
+
+    <tr>
+        <td>{{ player_score }}</td>
+        <td>{{ player_date }}</td> 
+    </tr>
+</table>
+
+{% endblock %}

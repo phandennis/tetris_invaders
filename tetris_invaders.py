@@ -1,5 +1,5 @@
 import pygame
-from screens import Welcome, GameScreen, GameOver
+from screens import Welcome, GameScreen, GameOver, Username
 
 
 class Game(GameScreen):
@@ -17,11 +17,11 @@ class Game(GameScreen):
         """Main method, manages interaction between screens"""
         self.all_sprites = pygame.sprite.Group()
         self.score = 0
-        self.username = ''
         state = {}
         # These are the available screens
         screens = {
             "welcome": Welcome,
+            "username": Username,
             "game": GameScreen,
             "game_over": GameOver
         }
@@ -48,5 +48,5 @@ class Game(GameScreen):
 
 
 if __name__ == "__main__":
-    tetris_shooter = Game()
-    tetris_shooter.run()
+    tetris_invader = Game()
+    tetris_invader.run()

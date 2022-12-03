@@ -38,7 +38,7 @@ class Welcome(BaseScreen):
 
         if start_rect.collidepoint(pygame.mouse.get_pos()):
             if pygame.mouse.get_pressed()[0]:
-                self.next_screen = "game"
+                self.next_screen = "username"
                 self.running = False
 
         #quit button
@@ -64,6 +64,6 @@ class Welcome(BaseScreen):
         When they press space it starts the game by moving to the game screen "game.py"
         """
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-            self.next_screen = "game"
+            self.next_screen = "username"
             self.running = False
         

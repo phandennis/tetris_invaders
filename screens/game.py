@@ -4,8 +4,8 @@ from sprites import Mob, Player, Projectile
 from pygame import mixer
 import json
 from datetime import datetime
-import webbrowser
 from subprocess import Popen
+import webbrowser
 
 # loads the player which is a ship from the Class Player
 ship = pygame.image.load('./images/player.png')
@@ -48,8 +48,8 @@ class GameScreen(BaseScreen, Player, Mob, Projectile):
         self.player1 = pygame.sprite.GroupSingle()
         self.player1.add(p_)
 
-        # default setting for the username
-        self.username = 'RandomUsername123'
+        print(self.state["name"])
+
 
 
         # initiates the music
@@ -135,13 +135,6 @@ class GameScreen(BaseScreen, Player, Mob, Projectile):
         # draw all sprites
         self.all_sprites.draw(self.window)
 
-
-        # input self.username
-        text_surface = self.font.render(f'Enter your username {self.username}', True, purple)
-        input_rect = text_surface.get_rect(center=(900,650))
-        self.window.blit(text_surface, (input_rect.x+5, input_rect.y))
-        input_rect.w = max(100, text_surface.get_width()+10)
-
         # wave 1 image
         wave1 = pygame.image.load("./images/wave1.png")
         wave1_rect = wave1.get_rect(center=(640,300))
@@ -172,12 +165,12 @@ class GameScreen(BaseScreen, Player, Mob, Projectile):
 
         current_time = pygame.time.get_ticks()
 
-
+        print(pygame.time.get_ticks())
         # wave 1
-        if (2310 < current_time < 3636):
+        if (4210 < current_time < 4638):
             self.window.blit(wave1, wave1_rect)
 
-        if (2210 < current_time < 2536):
+        if (4210 < current_time < 4836):
             pygame.mixer.Channel(2).play(pygame.mixer.Sound("./sound/wave1.ogg"))
             pygame.mixer.Channel(2).set_volume(2.0)
 
@@ -240,13 +233,6 @@ class GameScreen(BaseScreen, Player, Mob, Projectile):
         """
 
         if event.type == pygame.KEYDOWN:
-
-            if event.key == pygame.K_BACKSPACE:
-                self.username = self.username[:-1]
-            elif event.key != pygame.K_SPACE:
-                self.username = self.username + event.unicode
-
-
             if event.key == pygame.K_SPACE:
                 projectile = Projectile(p_.rect.centerx, p_.rect.top, self.projectile_image)
                 self.all_sprites.add(projectile)
@@ -264,6 +250,8 @@ class GameScreen(BaseScreen, Player, Mob, Projectile):
         When mobs hit the bottom of the screen, the game window turns to game over window
         When projectile hits, it kills itself and the sprite it collids
         """
+
+      
         # updates all the sprites
         fps.tick()
         current_time = pygame.time.get_ticks()
@@ -281,7 +269,7 @@ class GameScreen(BaseScreen, Player, Mob, Projectile):
 
         # Spawn mobs based on time that starts only on the game screen
         ### WAVE 1 ###
-        if (2309 < current_time < 2339):
+        if (4309 < current_time < 4345):
             self.create_tetris_blocks(1, 1, 110, 0, 100, self.L_mob)
             self.create_tetris_blocks(1, 1, 310, 0, 100, self.L_mob)
             self.create_tetris_blocks(1, 1, 710, 0, 100, self.L_mob)
@@ -350,8 +338,11 @@ class GameScreen(BaseScreen, Player, Mob, Projectile):
         if self.next_screen == "game_over":
             self.write_to_json()
 
+        if self.next_screen == "game":
+            self.display_username()
+
     def write_to_json(self):
-        entry = { "username": f'{self.username}', "score": int(f'{self.score}'), "date": datetime.today().strftime('%Y-%m-%d') }
+        entry = { "username": f'{self.state["name"]}', "score": int(f'{self.score}'), "date": datetime.today().strftime('%Y-%m-%d') }
         with open("./data/scores.json", "r") as file:
             data = json.load(file)
             data.append(entry)
@@ -359,6 +350,7 @@ class GameScreen(BaseScreen, Player, Mob, Projectile):
                 json.dump(list(data), f)
         Popen('python app.py')
         webbrowser.open('http://127.0.0.1:3000')
+
 
 
         

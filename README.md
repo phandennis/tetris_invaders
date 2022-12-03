@@ -11,7 +11,7 @@ Space to shoot on the game screen
 Press 'p' to pause
 
 ## To run the game
-run `python tetris_invaders.py` to check out the game
+run `python tetris_invaders.py` to check out the game  
 run `python app.py` to check out the leaderboards
 
 

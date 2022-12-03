@@ -1,7 +1,15 @@
+
+  <a href="/">Home</a>
+
 {% extends "base.html" %}
 {% block content %}
   <h1> Leaderboards </h1>
   <h2> Tetris Invaders</h2>
+  <form action="/" method="GET">
+    <button class="btn btn-dark" type="submit" name="name" value="name">Filter by name</button>
+    <button class="btn btn-dark" type="submit" name="score" value="score">Filter by score</button>
+    <button class="btn btn-dark" type="submit" name="date" value="date">Filter by date</button>
+  </form>
  
     <table style="width:100%" border-collapse="collapse">
       
@@ -10,15 +18,14 @@
         <th>Score</th>
         <th>Date</th>
       </tr>
-      {% for info in range(length) %}
+      {% for i in range(length) %}
       <tr>
-        <td> {{ name[info] }} </td>
-        <td> {{ score[info] }}</td>
-        <td> {{ date[info] }} </td>
+        <td><a href={{ url_for('player_profile', name=name[i] , score=score[i], date=date[i] ) }}>{{ name[i] }}</a></td>
+        <td>{{ score[i] }}</td>
+        <td> {{ date[i] }} </td>
       </tr>
       {% endfor %}
       
     </table>
-
-    <table style="width:100%">
+    
 {% endblock %}

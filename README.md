@@ -44,3 +44,17 @@ The sound effect along with it is also based on time.
 Currently there is a bug, as the time starts at the username screen.  
 
 ![gameplay](./images/readme/gameplay.png)
+
+### Game Over
+
+When a tetris block touches the bottom of the screen.  
+The username is written into the json file along with the score and date you played.  
+The leaderboards run on flask will pop up.  
+You can click `try again` to play.  
+
+![gameover](./images/readme/game_over.png)
+
+### Leaderboards
+
+![leaderboard](./images/readme/leaderboard.png)
+![profile](./images/readme/profile.png)

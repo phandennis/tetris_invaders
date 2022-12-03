@@ -20,7 +20,7 @@ run `python app.py` to check out the leaderboards
 
 You will enter the welcome screen shown below:
 
-You can press 'SPACE' or click the start button to enter the username screen  
+You can press `SPACE` or click the start button to enter the username screen  
 
 You can press `ESC` or click no the quit button to exit the game.
 
